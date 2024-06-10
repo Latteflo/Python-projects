@@ -44,7 +44,7 @@ def play_game():
     # The game has ended
     if winner == "X" or winner == "O":
         print(winner + " won.")
-    elif winner == None:
+    elif winner is None:
         print("Tie.")
 
 # Handle a single turn of an arbitrary player
