@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
+from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, StringField, SubmitField, RadioField
 from wtforms import SelectField, TextAreaField
@@ -11,14 +12,18 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 bcrypt = Bcrypt(app)
+
+db = SQLAlchemy(app)
 
 
 class ContactForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    country = SelectField('Please select your Country:', choices=[
+    country = SelectField('Country:', choices=[
         ('Belgium', 'Belgium'), ('France', 'France'), ('Germany', 'Germany'),
         ('Netherlands', 'Netherlands'), ('United Kingdom', 'United Kingdom'),
         ('USA', 'USA'), ('Canada', 'Canada'), ('Mexico', 'Mexico')])

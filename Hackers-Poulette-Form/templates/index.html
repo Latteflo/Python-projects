@@ -17,41 +17,143 @@
     <meta property="og:title" content="Hackers Poulette" />
     <meta property="og:type" content="website" />
     <title>Hackers Poulette - Contact</title>
-  </head>
-  <body style="margin: 0; padding: 0; font-family: Arial, sans-serif">
-    <header
-      style="
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+      header {
         background-color: #333;
-        padding: 10px;
+        padding: 15px;
         color: #fff;
         display: flex;
         justify-content: space-between;
         align-items: center;
-      "
-    >
-      <p style="margin: 0; font-size: 1.5em">Hackers Poulette</p>
-      <nav>
-        <ul style="display: flex; margin: 0; padding: 0; list-style: none">
-          <li style="margin-right: 15px">
-            <a href="#" style="color: white; text-decoration: none">Home</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-
-    <main
-      style="
+      }
+      nav ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      nav ul li {
+        margin-right: 15px;
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+      main {
         padding: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 90%;
+        max-width: 600px;
         margin: 0 auto;
-      "
-    >
-      <section id="welcome" style="margin-bottom: 20px">
-        <h2 style="font-size: 2em; color: #333">Welcome to Hackers Poulette</h2>
-        <p style="font-size: 1.1em; line-height: 1.6">
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      section {
+        margin-bottom: 20px;
+      }
+      h1,
+      h2 {
+        color: #4caf50;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+      }
+      form div {
+        margin-top: 15px;
+      }
+      .submit {
+        margin: 0 auto;
+        padding: 30px;
+      }
+      .gender {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+        margin-bottom: 15px;
+      }
+
+      .gender label {
+        margin: 10px;
+        align-items: center;
+      }
+
+      .gender input[type="radio"] {
+        margin: 10px;
+        vertical-align: middle;
+      }
+
+      .gender span {
+        margin: 0 10px;
+      }
+      .subject {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-content: center;
+        align-items: center;
+      }
+      label {
+        display: block;
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="email"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+      .error {
+        color: red;
+        font-size: 14px;
+      }
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 10px 40px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-right: 60pxl;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p>Hackers Poulette</p>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="welcome">
+        <h2>Welcome to Hackers Poulette</h2>
+        <p>
           Welcome to Hackers Poulette, your one-stop shop for all your Raspberry
           Pi needs. We offer a wide range of Raspberry Pi products, accessories,
           and resources to help you unleash your creativity and explore the
@@ -59,26 +161,7 @@
         </p>
       </section>
 
-      <section id="about" style="margin-bottom: 20px">
-        <h2 style="font-size: 2em; color: #333">About Hackers Poulette</h2>
-        <p style="font-size: 1.1em; line-height: 1.6">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae
-          justo nec nisl aliquet lacinia. Ut auctor, nunc id lacinia tincidunt,
-          nunc mauris tincidunt urna, id lacinia nisl nunc in nunc.
-        </p>
-      </section>
-
-      <section
-        id="contact"
-        style="
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin: 3rem;
-          align-content: center;
-          width: 600px;
-        "
-      >
+      <section>
         <h1>Contact Us</h1>
         <form action="" method="post">
           {{ form.hidden_tag() }}
@@ -87,47 +170,51 @@
             {{ form.first_name.label }}<br />
             {{ form.first_name(size=42) }}<br />
             {% for error in form.first_name.errors %}
-            <span class="error" style="color: red">{{ error }}</span>
+            <span class="error">{{ error }}</span>
             {% endfor %}
           </div>
           <div>
             {{ form.last_name.label }}<br />
             {{ form.last_name(size=42) }}<br />
             {% for error in form.last_name.errors %}
-            <span class="error" style="color: red">{{ error }}</span>
+            <span class="error">{{ error }}</span>
             {% endfor %}
           </div>
           <div>
             {{ form.email.label }}<br />
             {{ form.email(size=42) }}<br />
             {% for error in form.email.errors %}
-            <span class="error" style="color: red">{{ error }}</span>
+            <span class="error">{{ error }}</span>
             {% endfor %}
           </div>
           <div>
             {{ form.country.label }}<br />
             {{ form.country() }}<br />
           </div>
-          <div style="display: flex; text-decoration: none">
+          <div class="gender">
             {{ form.gender.label }}<br />
-            {{ form.gender() }}<br />
-            {% for error in form.gender.errors %}
-            <span class="error" style="color: red">{{ error }}</span>
+            {% for option in form.gender.choices %}
+            <span>
+              <input type="radio" name="gender" value="{{ option[0] }}" />{{
+              option[1]}}
+            </span>
+            {% endfor %} {% for error in form.gender.errors %}
+            <span class="error">{{ error }}</span>
             {% endfor %}
           </div>
           <div>
             {{ form.message.label }}<br />
             {{ form.message(rows=5, cols=42) }}<br />
             {% for error in form.message.errors %}
-            <span class="error" style="color: red">{{ error }}</span>
+            <span class="error">{{ error }}</span>
             {% endfor %}
           </div>
-          <div>
+          <div class="subject">
             {{ form.subject_repair() }} {{ form.subject_repair.label }}<br />
             {{ form.subject_order() }} {{ form.subject_order.label }}<br />
             {{ form.subject_other() }} {{ form.subject_other.label }}<br />
           </div>
-          <div>{{ form.submit()}}</div>
+          <div class="submit">{{ form.submit()}}</div>
         </form>
       </section>
     </main>
