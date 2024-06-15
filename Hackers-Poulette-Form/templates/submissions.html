@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Submissions</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+      th {
+        background-color: #f4f4f4;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Form Submissions</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Country</th>
+          <th>Gender</th>
+          <th>Message</th>
+          <th>Repair</th>
+          <th>Order</th>
+          <th>Other</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for contact in contacts %}
+        <tr>
+          <td>{{ contact.first_name }}</td>
+          <td>{{ contact.last_name }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.country }}</td>
+          <td>{{ contact.gender }}</td>
+          <td>{{ contact.message }}</td>
+          <td>{{ 'Yes' if contact.subject_repair else 'No' }}</td>
+          <td>{{ 'Yes' if contact.subject_order else 'No' }}</td>
+          <td>{{ 'Yes' if contact.subject_other else 'No' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
