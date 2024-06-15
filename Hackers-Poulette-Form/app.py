@@ -8,7 +8,6 @@ from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
 import os
 
-# Load environment variables
 load_dotenv()
 
 app = Flask(__name__)
@@ -17,8 +16,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
-
-# Define the Contact model
 
 
 class Contact(db.Model):
@@ -35,8 +32,6 @@ class Contact(db.Model):
 
     def __repr__(self):
         return f'<Contact {self.first_name} {self.last_name}>'
-
-# Define the ContactForm class
 
 
 class ContactForm(FlaskForm):
