@@ -22,7 +22,7 @@ class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(120), nullable=False, unique=True)
+    email = db.Column(db.String(120), nullable=False)
     country = db.Column(db.String(50), nullable=False)
     gender = db.Column(db.String(1), nullable=False)
     message = db.Column(db.Text, nullable=False)
@@ -80,15 +80,10 @@ def index():
     return render_template('index.html', form=form)
 
 
-@app.route('/submissions')
-def submissions():
-    contacts = Contact.query.all()
-    return render_template('submissions.html', contacts=contacts)
-
-
 @app.route('/thank_you')
 def thank_you():
-    return render_template('thank_you.html')
+    last_contact = Contact.query.order_by(Contact.id.desc()).first()
+    return render_template('thank_you.html', contact=last_contact)
 
 
 if __name__ == '__main__':
