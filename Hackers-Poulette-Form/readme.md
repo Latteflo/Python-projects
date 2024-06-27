@@ -20,7 +20,6 @@ The company Hackers Poulette™ sells DIY kits and accessories for Rasperri Pi. 
 * Ideally, display error messages near their respective fields.
 * The form will perform server-side sanitization and validation.
 * If sanitization and validation are successful, a "Thank you for contacting us." page will be displayed, summarizing all the encoded information.
-* Implementation of the honeypot anti-spam technique.
 * The form will be stored in a database.
   
 ## Website
